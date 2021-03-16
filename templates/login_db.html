@@ -1,0 +1,101 @@
+<html>
+<style>
+    .btn{
+      text-decoration: none;
+      font-size:1rem;
+      color:white;
+      padding:10px 20px 10px 20px;
+      margin:20px;
+      display:inline-block;
+      border-radius: 10px;
+      transition:all 0.1s;
+      text-shadow: 0px -2px rgba(0, 0, 0, 0.44);
+
+    }
+    .btn:active{
+      transform: translateY(3px);
+    }
+    .btn.blue{
+      background-color: #1f75d9;
+      border-bottom:5px solid #165195;
+    }
+    .btn.blue:active{
+      border-bottom:2px solid #165195;
+    }
+    table.type11 { border-collapse: separate; border-spacing: 1px; text-align: center; line-height: 1.5; margin: 20px 10px;}
+    table.type11 th { width: 155px; padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #ce4869 ;}
+    table.type11 td { width: 155px; padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee;}
+
+</style>
+<div>
+
+<body>
+로그인 성공
+<form action="/mem_del/" method="POST">
+<table class="type11">
+      <thead>
+      <tr>
+            <th scope="cols">아이디</th>
+            <th scope="cols">이름</th>
+            <th scope="cols">주소</th>
+            <th scope="cols">전화번호</th>
+            
+      </tr>
+      </thead>
+      <tbody>
+      <!--
+      {{datapack}}
+      {% for myList in datapack %}
+      <tr>
+            <td>{{ myList[0] }}
+            </td><td>{{ myList[2] }}
+            </td><td>{{ myList[3] }}
+            </td><td>{{ myList[4] }}
+   
+      </td></tr>
+      
+      {% set a = myList[5] %}
+      <input type="hidden" id="no" name="no" value= {{a}} >
+      <input type="submit" Value="회원탈퇴">
+     
+      {% endfor %}
+      -->
+      {% set a=datapack[0]%}
+      
+      {% for myList in datapack %}
+      <tr>
+            <td>{{ myList[0] }}
+            </td><td>{{ myList[2] }}
+            </td><td>{{ myList[3] }}
+            </td><td>{{ myList[4] }}
+      {% endfor %}
+      </td></tr>
+      </tbody>
+</table>
+
+<a class="btn blue" href="/">돌아가기</a><br>
+<input type="hidden" id="no" name="no" value= {{a[5]}} >
+      <input type="submit" Value="회원탈퇴">
+ <!--
+   <a href="http://localhost:5000/mem_del/?uid={{u_id}}"
+  데이터 보내는 또다른 방법
+  uid 라는 변수로 u_id 값을 보낸다
+ -->
+{%if a[0]%}
+<button type="button" onclick="location.href ='http://localhost:5000/'">로그 아웃</button> 
+<input type="hidden" id="u_id" name="u_id" value= {{a[0]}} >
+{%endif%}
+
+
+
+
+</form>
+<form action="/mem_fix/" method="POST">
+<input type="hidden" id="no" name="no" value= {{a[5]}} >
+      <input type="submit" Value="회원정보수정">
+      
+</form>
+</div>
+
+</body>
+</html>

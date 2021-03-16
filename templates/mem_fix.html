@@ -1,0 +1,90 @@
+<html>
+<style>
+    .btn{
+      text-decoration: none;
+      font-size:1rem;
+      color:white;
+      padding:10px 20px 10px 20px;
+      margin:20px;
+      display:inline-block;
+      border-radius: 10px;
+      transition:all 0.1s;
+      text-shadow: 0px -2px rgba(0, 0, 0, 0.44);
+
+    }
+    .btn:active{
+      transform: translateY(3px);
+    }
+    .btn.blue{
+      background-color: #1f75d9;
+      border-bottom:5px solid #165195;
+    }
+    .btn.blue:active{
+      border-bottom:2px solid #165195;
+    }
+    table.type11 { border-collapse: separate; border-spacing: 1px; text-align: center; line-height: 1.5; margin: 20px 10px;}
+    table.type11 th { width: 155px; padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #ce4869 ;}
+    table.type11 td { width: 155px; padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee;}
+
+</style>
+   
+<div>
+
+<body>
+
+
+<table class="type11">
+      <thead>
+      <tr>
+            <th scope="cols">아이디</th>
+            <th scope="cols">비밀번호</th>
+            <th scope="cols">이름</th>
+            <th scope="cols">주소</th>
+            <th scope="cols">전화번호</th>
+            
+      </tr>
+      </thead>
+      <tbody>
+
+      {% set a=datapack[0]%}
+      
+      {% for myList in datapack %}
+      <tr>
+            <td>{{ myList[0] }}
+            </td><td>{{ myList[1] }}
+            </td><td>{{ myList[2] }}
+            </td><td>{{ myList[3] }}
+            </td><td>{{ myList[4] }}
+      {% endfor %}
+      </td></tr>
+      </tbody>
+      
+</table>
+<form action="/mem_fix_edit/" method="POST">
+      수정할 데이터 선택<br>
+
+<input type="text"  id="e_id" name="e_id" >
+
+      <input type="submit" Value="아이디"><br>
+      <input type="hidden" name="hide" value={{a[0]}}>
+<input type="text" id="e_pw" name="e_pw" >
+
+      <input type="submit" Value="비밀번호"><br>
+      <input type="hidden" name="hide" value={{a[0]}}>
+<input type="text" id="e_name" name="e_name"  >
+
+      <input type="submit" Value="이름"><br>
+<input type="text" id="e_add" name="e_add" >
+
+      <input type="submit" Value="주소"><br>
+      <input type="hidden" name="hide" value={{a[0]}}>
+<input type="text" id="e_num" name="e_num"  >
+
+      <input type="submit" Value="전화번호"><br>
+      <input type="hidden" name="hide" value={{a[0]}}>
+</form>
+<a class="btn blue" href="/">돌아가기</a><br>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+<style>
+    .btn{
+      text-decoration: none;
+      font-size:1rem;
+      color:white;
+      padding:10px 20px 10px 20px;
+      margin:20px;
+      display:inline-block;
+      border-radius: 10px;
+      transition:all 0.1s;
+      text-shadow: 0px -2px rgba(0, 0, 0, 0.44);
+
+    }
+    .btn:active{
+      transform: translateY(3px);
+    }
+    .btn.blue{
+      background-color: #1f75d9;
+      border-bottom:5px solid #165195;
+    }
+    .btn.blue:active{
+      border-bottom:2px solid #165195;
+    }
+    table.type11 { border-collapse: separate; border-spacing: 1px; text-align: center; line-height: 1.5; margin: 20px 10px;}
+    table.type11 th { width: 155px; padding: 10px; font-weight: bold; vertical-align: top; color: #fff; background: #ce4869 ;}
+    table.type11 td { width: 155px; padding: 10px; vertical-align: top; border-bottom: 1px solid #ccc; background: #eee;}
+
+</style>
+<div>
+
+<body>
+
+
+<table class="type11">
+      <thead>
+      <tr>
+      {% set a=datapack[0]%}
+        {%for i in a%}
+            <th scope="cols"></th>
+        {% endfor %}    
+      </tr>
+      </thead>
+      <tbody>
+    <tr>   
+    {% for myList in datapack%}
+        {%for i in myList%}
+            <td>{{i}}</td>
+        {% endfor %}
+    </tr>    
+    {% endfor %}
+      </tbody>
+</table>
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
